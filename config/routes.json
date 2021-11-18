@@ -1,0 +1,36 @@
+{
+	"routes": [
+		{
+			"method": "POST",
+			"path": "/publish",
+			"handler": "publish.index",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "GET",
+			"path": "/settings",
+			"handler": "settings.get",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "GET",
+			"path": "/logs",
+			"handler": "logs.get",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "POST",
+			"path": "/logs",
+			"handler": "logs.add",
+			"config": {
+				"policies": []
+			}
+		}
+	]
+}

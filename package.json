@@ -1,0 +1,37 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"name": "strapi-plugin-website-builder",
+	"version": "1.0.0",
+	"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds",
+	"scripts": {
+		"lint": "eslint --fix **/*.{ts,js,json,yml}",
+		"format": "prettier --write **/*.{ts,js,json,yml}"
+	},
+	"dependencies": {
+		"got": "^11.8.2"
+	},
+	"author": {
+		"name": "@ComfortablyCoding (https://github.com/ComfortablyCoding)"
+	},
+	"engines": {
+		"node": ">=10.16.0 <=14.x.x",
+		"npm": ">=6.0.0"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^8.2.0",
+		"eslint-config-prettier": "^8.3.0",
+		"prettier": "^2.4.1"
+	},
+	"keywords": [
+		"website-builder",
+		"publishing",
+		"strapi",
+		"strapi-plugin"
+	],
+	"strapi": {
+		"name": "website-builder",
+		"icon": "plug",
+		"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds"
+	}
+}
