@@ -1,28 +1,28 @@
-# Strapi plugin website-builder
+# strapi-plugin-website-builder
 
 A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to manually trigger website builds
 
 ## Requirements
 
-Complete installation requirements the same as Strapi itself and can be found in the documentation under [Quick Start Guide](https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html) Prerequisites info card.
+The installation requirements are the same as Strapi itself and can be found in the documentation on the [Quick Start](https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html) page in the Prerequisites info card.
 
 **Supported Strapi versions**:
 
 - Strapi v3.6.8
 
-(ThWhile this plugin may work with the older Strapi versions, they are not supported.)
+(While this plugin may work with the older Strapi versions, they are not supported.)
 
 **It is recommended to always use the latest version of Strapi when starting new projects**.
 
 ## Installation
 
-```bash
+```sh
 npm install strapi-plugin-website-builder
 ```
 
 **or**
 
-```bash
+```sh
 yarn add strapi-plugin-website-builder
 ```
 
