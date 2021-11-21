@@ -24,8 +24,8 @@
 		"prettier": "^2.4.1"
 	},
 	"keywords": [
-		"website-builder",
 		"publishing",
+		"website-builder",
 		"strapi",
 		"strapi-plugin"
 	],
@@ -33,5 +33,13 @@
 		"name": "website-builder",
 		"icon": "plug",
 		"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds"
+	},
+	"homepage": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues"
 	}
 }
