@@ -24,10 +24,10 @@ module.exports = {
 		} catch (error) {
 			ctx.send({
 				data: null,
-				error:{
+				error: {
 					name: error.name,
-					message:error.message
-				}
+					message: error.message,
+				},
 			});
 		}
 	},
@@ -55,10 +55,10 @@ module.exports = {
 		} catch (error) {
 			ctx.send({
 				data: null,
-				error:{
+				error: {
 					name: error.name,
-					message:error.message
-				}
+					message: error.message,
+				},
 			});
 		}
 	},

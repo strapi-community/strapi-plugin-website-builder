@@ -22,7 +22,7 @@ module.exports = {
 	},
 	/**
 	 * Updates the build logs to a new set
-	 * 
+	 *
 	 * @param {array} logs The new set of build logs to update to.
 	 *
 	 * @return {Promise<array>} logs
