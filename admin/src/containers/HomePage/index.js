@@ -41,7 +41,7 @@ const HomePage = () => {
 				method: 'POST',
 				params: {
 					id: time,
-					status: 'Success',
+					status: 'Error',
 					timestamp: time,
 				},
 			});
