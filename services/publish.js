@@ -11,11 +11,11 @@ module.exports = {
 	/**
 	 * Makes a request to the url specified in the plugin config
 	 *
-	 * @param {Object} settings The configuration settings for the plugin
+	 * @param {object} settings The configuration settings for the plugin
 	 *
-	 * @return Promise<Object> response The response data from the url
+	 * @return {Promise<object>} response The response data from the url
 	 */
-	index: async (settings) => {
+	index: (settings) => {
 		const { url, headers } = settings;
 		const options = {
 			responseType: 'json',
