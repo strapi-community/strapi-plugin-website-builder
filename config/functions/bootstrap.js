@@ -23,7 +23,7 @@ module.exports = async () => {
 	});
 
 	await store.set({
-		key: 'logs',
+		key: 'build_logs',
 		value: [],
 	});
 };

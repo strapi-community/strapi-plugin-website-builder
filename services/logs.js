@@ -8,7 +8,7 @@
 
 module.exports = {
 	/**
-	 * Returns the currently stored logs
+	 * Returns the currently stored build logs
 	 *
 	 * @return {Array} logs
 	 */
@@ -18,20 +18,20 @@ module.exports = {
 				type: 'plugin',
 				name: 'website-builder_store',
 			})
-			.get({ key: 'logs' });
+			.get({ key: 'build_logs' });
 	},
 	/**
-	 * Adds a new set of logs
+	 * Updates the build logs to a new set
 	 *
 	 * @return {Array} logs
 	 */
 
-	add: async (logs) => {
+	update: async (logs) => {
 		return strapi
 			.store({
 				type: 'plugin',
 				name: 'website-builder_store',
 			})
-			.set({ key: 'logs', value: logs });
+			.set({ key: 'build_logs', value: logs });
 	},
 };

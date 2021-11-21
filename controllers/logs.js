@@ -33,7 +33,7 @@ module.exports = {
 	 *
 	 * @return {Object}
 	 */
-	add: async (ctx) => {
+	update: async (ctx) => {
 		const log = ctx.query;
 		try {
 			const logs = await strapi.plugins[pluginId].services.logs.get();
@@ -43,13 +43,12 @@ module.exports = {
 			const values = logs.slice(-maxNumOfLogs);
 			values.push(log);
 
-			await strapi.plugins[pluginId].services.logs.add(values);
+			await strapi.plugins[pluginId].services.logs.update(values);
 
 			ctx.send({
 				data: values,
 			});
 		} catch (error) {
-			console.log(error);
 			ctx.send({
 				data: error,
 			});
