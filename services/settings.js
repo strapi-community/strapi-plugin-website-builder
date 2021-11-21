@@ -16,7 +16,7 @@ module.exports = {
 		return strapi
 			.store({
 				type: 'plugin',
-				name: 'website-builder',
+				name: 'website-builder_store',
 			})
 			.get({ key: 'settings' });
 	},

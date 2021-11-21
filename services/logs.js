@@ -16,7 +16,7 @@ module.exports = {
 		return strapi
 			.store({
 				type: 'plugin',
-				name: 'website-builder',
+				name: 'website-builder_store',
 			})
 			.get({ key: 'logs' });
 	},
@@ -30,7 +30,7 @@ module.exports = {
 		return strapi
 			.store({
 				type: 'plugin',
-				name: 'website-builder',
+				name: 'website-builder_store',
 			})
 			.set({ key: 'logs', value: logs });
 	},
