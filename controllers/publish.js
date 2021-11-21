@@ -23,7 +23,12 @@ module.exports = {
 			});
 		} catch (error) {
 			ctx.send({
-				data: error,
+				data: null,
+				error: {
+					code: error.code,
+					name: error.name,
+					message: error.message,
+				},
 			});
 		}
 	},

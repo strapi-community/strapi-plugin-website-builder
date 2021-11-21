@@ -23,7 +23,11 @@ module.exports = {
 			});
 		} catch (error) {
 			ctx.send({
-				data: error,
+				data: null,
+				error:{
+					name: error.name,
+					message:error.message
+				}
 			});
 		}
 	},
@@ -50,7 +54,11 @@ module.exports = {
 			});
 		} catch (error) {
 			ctx.send({
-				data: error,
+				data: null,
+				error:{
+					name: error.name,
+					message:error.message
+				}
 			});
 		}
 	},
