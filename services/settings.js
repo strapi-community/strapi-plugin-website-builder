@@ -10,13 +10,13 @@ module.exports = {
 	/**
 	 * Returns the current settings object
 	 *
-	 * @return {Object} settings The configuration settings for the plugin
+	 * @return {Promise<object>} settings The configuration settings for the plugin
 	 */
-	get: async () => {
+	get: () => {
 		return strapi
 			.store({
 				type: 'plugin',
-				name: 'website-builder',
+				name: 'website-builder_store',
 			})
 			.get({ key: 'settings' });
 	},

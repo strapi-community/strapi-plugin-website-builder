@@ -27,7 +27,7 @@
 		{
 			"method": "POST",
 			"path": "/logs",
-			"handler": "logs.add",
+			"handler": "logs.update",
 			"config": {
 				"policies": []
 			}

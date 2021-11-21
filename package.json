@@ -1,10 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"name": "strapi-plugin-website-builder",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds",
 	"scripts": {
-		"lint": "eslint --fix **/*.{ts,js,json,yml}",
+		"lint": "eslint --fix",
 		"format": "prettier --write **/*.{ts,js,json,yml}"
 	},
 	"dependencies": {
@@ -19,13 +19,16 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@babel/eslint-parser": "^7.16.3",
 		"eslint": "^8.2.0",
 		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-react": "^7.27.1",
 		"prettier": "^2.4.1"
 	},
 	"keywords": [
-		"website-builder",
 		"publishing",
+		"website-builder",
 		"strapi",
 		"strapi-plugin"
 	],
@@ -33,5 +36,13 @@
 		"name": "website-builder",
 		"icon": "plug",
 		"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds"
+	},
+	"homepage": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues"
 	}
 }

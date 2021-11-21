@@ -5,14 +5,14 @@
  */
 
 import React, { memo, useState, useEffect } from 'react';
-import { request, useGlobalContext } from 'strapi-helper-plugin';
+import { useGlobalContext } from 'strapi-helper-plugin';
 
 import { Header } from '@buffetjs/custom';
 import { Padded } from '@buffetjs/core';
 import LogTable from '../../components/LogTable';
 
+import pluginEndpointRequest from '../../utils/pluginEndpointRequest';
 import getTrad from '../../utils/getTrad';
-import getRequestURL from '../../utils/getRequestURL';
 
 const HomePage = () => {
 	const { formatMessage } = useGlobalContext();
@@ -21,13 +21,13 @@ const HomePage = () => {
 	async function handlePublish() {
 		let logs;
 		try {
-			await request(getRequestURL('publish'), {
+			await pluginEndpointRequest('publish', {
 				method: 'POST',
 			});
 			strapi.notification.success(getTrad('publish.success'));
 
 			const time = Date.now();
-			logs = await request(getRequestURL('logs'), {
+			logs = await pluginEndpointRequest('logs', {
 				method: 'POST',
 				params: {
 					id: time,
@@ -37,11 +37,11 @@ const HomePage = () => {
 			});
 		} catch (error) {
 			strapi.notification.error(getTrad('publish.error'));
-			logs = await request(getRequestURL('logs'), {
+			logs = await pluginEndpointRequest('logs', {
 				method: 'POST',
 				params: {
 					id: time,
-					status: 'Success',
+					status: 'Error',
 					timestamp: time,
 				},
 			});
@@ -54,7 +54,7 @@ const HomePage = () => {
 	useEffect(() => {
 		async function getBuildLogs() {
 			try {
-				const response = await request(getRequestURL('logs'), {
+				const response = await pluginEndpointRequest('logs', {
 					method: 'GET',
 				});
 				setLogs(response.data);

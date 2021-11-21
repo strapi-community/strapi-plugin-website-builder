@@ -4,16 +4,11 @@ module.exports = async () => {
 	// init plugin store
 	const store = strapi.store({
 		type: 'plugin',
-		name: pluginId,
+		name: `${pluginId}_store`,
 	});
 
 	// seed initial data from config
-	let { url, headers, maxNumOfLogs } = strapi.plugins[pluginId].config;
-
-	// set defaults
-	if (!maxNumOfLogs) {
-		maxNumOfLogs = 5;
-	}
+	let { url, headers, maxNumOfLogs = 5 } = strapi.plugins[pluginId].config;
 
 	// account for 0 indexed array
 	const normalizedMaxNumOfLogs = maxNumOfLogs - 1;
@@ -28,7 +23,7 @@ module.exports = async () => {
 	});
 
 	await store.set({
-		key: 'logs',
+		key: 'build_logs',
 		value: [],
 	});
 };
