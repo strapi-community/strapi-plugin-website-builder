@@ -1,10 +1,9 @@
-import { prefixPluginTranslations } from '@strapi/helper-plugin';
-import pluginPkg from '../../package.json';
-import pluginId from './pluginId';
+import { pluginId } from './pluginId';
 import Initializer from './components/Initializer';
 import PluginIcon from './components/PluginIcon';
+import PluginPkg from '../../package.json';
 
-const name = pluginPkg.strapi.name;
+const name = PluginPkg.strapi.displayName;
 
 export default {
 	register(app) {
@@ -20,13 +19,6 @@ export default {
 
 				return component;
 			},
-			permissions: [
-				// Uncomment to set the permissions of the plugin here
-				// {
-				//   action: '', // the action name should be plugin::plugin-name.actionType
-				//   subject: null,
-				// },
-			],
 		});
 		app.registerPlugin({
 			id: pluginId,
@@ -34,28 +26,5 @@ export default {
 			isReady: false,
 			name,
 		});
-	},
-
-	bootstrap(app) {},
-	async registerTrads({ locales }) {
-		const importedTrads = await Promise.all(
-			locales.map((locale) => {
-				return import(`./translations/${locale}.json`)
-					.then(({ default: data }) => {
-						return {
-							data: prefixPluginTranslations(data, pluginId),
-							locale,
-						};
-					})
-					.catch(() => {
-						return {
-							data: {},
-							locale,
-						};
-					});
-			})
-		);
-
-		return Promise.resolve(importedTrads);
 	},
 };
