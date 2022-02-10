@@ -28,19 +28,21 @@ yarn add strapi-plugin-website-builder
 
 The plugin configuration is stored in a config file located at `./config/plugins.js`.
 
-The plugin has different structures depending on the type of trigger for the build. Each of the following sample configurations are the minimums needed for their respective trigger type.
+The plugin has different structures depending on the type of trigger for the build. Each of the following sample configurations is the minimum needed for their respective trigger type.
 
 ### Manual Configuration
 
 ```javascript
 module.exports = ({ env }) => ({
  'website-builder': {
-  enabled: true,
-  url: 'https://link-to-hit-on-trigger.com',
-  trigger: {
-   type: 'manual',
+    enabled: true,
+    config: {
+      url: 'https://link-to-hit-on-trigger.com',
+      trigger: {
+        type: 'manual',
+      },
+    }
   },
- },
 });
 ```
 
@@ -49,13 +51,15 @@ module.exports = ({ env }) => ({
 ```javascript
 module.exports = ({ env }) => ({
  'website-builder': {
-  enabled: true,
-  url: 'https://link-to-hit-on-trigger.com',
-  trigger: {
-   type: 'cron',
-   cron: '* * 1 * * *',
+    enabled: true,
+    config: {
+      url: 'https://link-to-hit-on-trigger.com',
+      trigger: {
+        type: 'cron',
+        cron: '* * 1 * * *',
+      },
+    }
   },
- },
 });
 ```
 
@@ -64,18 +68,20 @@ module.exports = ({ env }) => ({
 ```javascript
 module.exports = ({ env }) => ({
  'website-builder': {
-  enabled: true,
-  url: 'https://link-to-hit-on-trigger.com',
-  trigger: {
-   type: 'event',
-   events: [
-    {
-     model: 'recipes',
-     types: ['create', 'delete'],
-    },
-   ],
+    enabled: true,
+    config: {
+      url: 'https://link-to-hit-on-trigger.com',
+      trigger: {
+        type: 'event',
+        events: [
+          {
+            model: 'recipes',
+            types: ['create', 'delete'],
+          },
+        ],
+      },
+    }
   },
- },
 });
 ```
 
