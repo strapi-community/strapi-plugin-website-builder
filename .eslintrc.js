@@ -3,7 +3,6 @@ const backendESLint = require('./.eslintrc.backend.js');
 
 module.exports = {
 	$schema: 'https://json.schemastore.org/eslintrc',
-	// parser: '@babel/eslint-parser',
 	parserOptions: {
 		ecmaVersion: 2018,
 	},
@@ -18,12 +17,11 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['/**/*'],
-			excludedFiles: ['/admin/**/*'],
+			files: ['server/**/*'],
 			...backendESLint,
 		},
 		{
-			files: ['/admin/**/*'],
+			files: ['admin/**/*'],
 			...frontendESLint,
 		},
 	],

@@ -1,42 +1,22 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"name": "strapi-plugin-website-builder",
-	"version": "1.0.3",
-	"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds",
+	"version": "2.0.0",
+	"description": "A plugin for Strapi Headless CMS that provides the ability to trigger website builds manually, periodically or through model events.",
 	"scripts": {
-		"lint": "eslint --fix",
+		"lint": "eslint . --fix",
 		"format": "prettier --write **/*.{ts,js,json,yml}"
 	},
-	"dependencies": {
-		"got": "^11.8.2"
-	},
 	"author": {
-		"name": "@ComfortablyCoding (https://github.com/ComfortablyCoding)"
+		"name": "@ComfortablyCoding",
+		"url": "https://github.com/ComfortablyCoding"
 	},
-	"engines": {
-		"node": ">=10.16.0 <=14.x.x",
-		"npm": ">=6.0.0"
-	},
-	"license": "MIT",
-	"devDependencies": {
-		"@babel/eslint-parser": "^7.16.3",
-		"eslint": "^8.2.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-react": "^7.27.1",
-		"prettier": "^2.4.1"
-	},
-	"keywords": [
-		"publishing",
-		"website-builder",
-		"strapi",
-		"strapi-plugin"
+	"maintainers": [
+		{
+			"name": "@ComfortablyCoding",
+			"url": "https://github.com/ComfortablyCoding"
+		}
 	],
-	"strapi": {
-		"name": "website-builder",
-		"icon": "plug",
-		"description": "A plugin for Strapi Headless CMS that provides the ability to manually trigger website builds"
-	},
 	"homepage": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder#readme",
 	"repository": {
 		"type": "git",
@@ -44,5 +24,43 @@
 	},
 	"bugs": {
 		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues"
-	}
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/core": "^7.17.2",
+		"@babel/eslint-parser": "^7.17.0",
+		"@babel/preset-react": "^7.16.7",
+		"eslint": "^8.8.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-react": "^7.28.0",
+		"prettier": "^2.5.1"
+	},
+	"peerDependencies": {
+		"@strapi/strapi": "^4.0.7",
+		"axios": "^0.24.0",
+		"react-query": "^3.24.3",
+		"yup": "^0.32.9"
+	},
+	"strapi": {
+		"displayName": "Website Builder",
+		"description": "A plugin for Strapi Headless CMS that provides the ability to trigger website builds manually, periodically or through model events.",
+		"name": "website-builder",
+		"kind": "plugin"
+	},
+	"engines": {
+		"node": ">=12.x.x <=16.x.x",
+		"npm": ">=6.0.0"
+	},
+	"keywords": [
+		"strapi",
+		"strapi-plugin",
+		"plugin",
+		"strapi plugin",
+		"publishing",
+		"website-builder",
+		"website builder",
+		"build website"
+	],
+	"license": "MIT"
 }
