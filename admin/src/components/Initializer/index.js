@@ -6,21 +6,21 @@
 
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { pluginId } from '../../utils/constants';
+import pluginId from '../../pluginId';
 
-const Initializer = ({ updatePlugin }) => {
+const Initializer = ({ setPlugin }) => {
 	const ref = useRef();
-	ref.current = updatePlugin;
+	ref.current = setPlugin;
 
 	useEffect(() => {
-		ref.current(pluginId, 'isReady', true);
+		ref.current(pluginId);
 	}, []);
 
 	return null;
 };
 
 Initializer.propTypes = {
-	updatePlugin: PropTypes.func.isRequired,
+	setPlugin: PropTypes.func.isRequired,
 };
 
 export default Initializer;

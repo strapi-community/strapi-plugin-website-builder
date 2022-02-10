@@ -3,21 +3,24 @@ module.exports = {
 	parser: '@babel/eslint-parser',
 	env: {
 		browser: true,
-		commonjs: true,
 		es6: true,
 	},
 	plugins: ['react'],
 	extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
 	parserOptions: {
+		requireConfigFile: false,
 		ecmaVersion: 2018,
 		ecmaFeatures: {
 			jsx: true,
 		},
 		sourceType: 'module',
+		babelOptions: {
+			presets: ['@babel/preset-react'],
+		},
 	},
 	settings: {
 		react: {
-			version: '16.5.2',
+			version: 'detect',
 		},
 	},
 };
