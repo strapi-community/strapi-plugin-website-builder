@@ -1,6 +1,9 @@
 'use strict';
 
+const { pluginConfigSchema } = require('./schema.js');
+
 module.exports = {
-	default: {},
-	validator() {},
+	validator: async (config) => {
+		await pluginConfigSchema.validate(config);
+	},
 };

@@ -1,3 +1,7 @@
 'use strict';
 
-module.exports = {};
+const logContentType = require('./log-content-type');
+
+module.exports = {
+	log: { schema: logContentType },
+};
