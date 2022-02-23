@@ -18,7 +18,7 @@ module.exports = ({ strapi }) => ({
 		try {
 			let requestConfig = { method: 'POST', data: {}, url: settings.url };
 			if (settings.headers) {
-				requestConfig.headers = settings.header;
+				requestConfig.headers = settings.headers;
 			}
 
 			if (settings.body) {
