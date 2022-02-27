@@ -1,6 +1,7 @@
 'use strict';
 
 const axios = require('axios').default;
+const crypto = require('crypto');
 const { getPluginService } = require('../utils/getPluginService');
 
 module.exports = ({ strapi }) => ({
@@ -24,6 +25,19 @@ module.exports = ({ strapi }) => ({
 			if (settings.body) {
 				requestConfig.data = settings.body;
 			}
+
+			if (settings.secret) {
+				const { hash, headerKey, secretKey } = settings.secret;
+				const normalizedHash = hash.toLowerCase();
+				requestConfig.headers = {
+					...(requestConfig.headers || {}),
+					[headerKey]: `${normalizedHash}=${crypto
+						.createHmac(normalizedHash, secretKey)
+						.update(JSON.stringify(requestConfig.data))
+						.digest('hex')}`,
+				};
+			}
+
 			const buildResponse = await axios(requestConfig);
 			status = buildResponse.status;
 		} catch (error) {

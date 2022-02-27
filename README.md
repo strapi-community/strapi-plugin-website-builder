@@ -94,6 +94,10 @@ module.exports = ({ env }) => ({
 | url | The trigger URL for the website build. | String | Yes |
 | headers | Any headers to send along with the request. | Object | No |
 | body | Any body data to send along with the request. | Object | No |
+| secret | Secret key to sign body of the request with. | Object | No |
+| secret.hash | Algorith to use for signing e.g. sha1, sha256, etc. | string | Yes |
+| secret.headerKey | Header key where the signature should be stored. | string | Yes |
+| secret.secretKey | Secret key to sign body with. | string | Yes |
 | trigger | The trigger conditions for the build.  | Object | Yes |
 | trigger.type | The type of trigger. The current supported options are `manual`,`cron` and `event` | String | Yes |
 | trigger.cron | The cron expression to use for cron trigger. The supported expressions are the same as in the [strapi docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/cronjobs.html#cron-jobs) | String | Only if the type is cron |

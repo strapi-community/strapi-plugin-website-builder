@@ -8,6 +8,11 @@ const pluginConfigSchema = yup
 		url: yup.string().url().required('url is required'),
 		headers: yup.object(),
 		body: yup.object(),
+		secret: yup.object().shape({
+			hash: yup.string().required('algorithm is required'),
+			headerKey: yup.string().required('headerKey is required'),
+			secretKey: yup.string().required('secretKey is required'),
+		}),
 		trigger: yup
 			.object()
 			.shape({
