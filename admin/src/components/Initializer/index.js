@@ -23,4 +23,4 @@ Initializer.propTypes = {
 	setPlugin: PropTypes.func.isRequired,
 };
 
-export default Initializer;
+export { Initializer };

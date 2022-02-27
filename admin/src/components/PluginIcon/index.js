@@ -9,4 +9,4 @@ import Play from '@strapi/icons/Play';
 
 const PluginIcon = () => <Play />;
 
-export default PluginIcon;
+export { PluginIcon };

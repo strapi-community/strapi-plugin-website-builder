@@ -1,25 +1,13 @@
 import React from 'react';
-import { useMutation, useQueryClient } from 'react-query';
 import Publish from '@strapi/icons/Play';
 import { HeaderLayout } from '@strapi/design-system/Layout';
 import { Button } from '@strapi/design-system/Button';
-import { requestPluginEndpoint } from '../../../../utils/requestPluginEndpoint';
-
-const triggerBuild = () =>
-	requestPluginEndpoint('build', {
-		method: 'POST',
-	});
+import { useReactQuery } from '../../../../hooks/useReactQuery';
 
 export const HomeHeaderLayout = () => {
-	const queryClient = useQueryClient();
+	const { buildMutations } = useReactQuery();
 
-	const mutation = useMutation(triggerBuild, {
-		onSuccess: () => {
-			queryClient.invalidateQueries('build-logs');
-		},
-	});
-
-	const handleTrigger = async () => mutation.mutate();
+	const handleTrigger = async () => buildMutations.create.mutate();
 	return (
 		<HeaderLayout
 			primaryAction={

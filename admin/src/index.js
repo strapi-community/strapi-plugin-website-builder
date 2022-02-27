@@ -1,9 +1,10 @@
+import { prefixPluginTranslations } from '@strapi/helper-plugin';
 import { pluginId } from './pluginId';
-import Initializer from './components/Initializer';
-import PluginIcon from './components/PluginIcon';
-import PluginPkg from '../../package.json';
+import { Initializer } from './components/Initializer';
+import { PluginIcon } from './components/PluginIcon';
+import pluginPkg from '../../package.json';
 
-const name = PluginPkg.strapi.displayName;
+const name = pluginPkg.strapi.displayName;
 
 export default {
 	register(app) {
@@ -26,5 +27,22 @@ export default {
 			isReady: false,
 			name,
 		});
+	},
+	async registerTrads({ locales }) {
+		const importedTrads = [];
+
+		for (const locale of locales) {
+			try {
+				const { default: data } = await import(`./translations/${locale}.json`);
+				importedTrads.push({
+					data: prefixPluginTranslations(data, pluginId),
+					locale,
+				});
+			} catch (error) {
+				importedTrads.push({ data: {}, locale });
+			}
+		}
+
+		return importedTrads;
 	},
 };
