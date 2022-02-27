@@ -1,3 +1,5 @@
+'use strict';
+
 const { getPluginService } = require('./getPluginService');
 
 const normalizeEvents = (events) => {
@@ -32,9 +34,12 @@ const setupEventWebhook = (strapi, settings) => {
 	const events = normalizeEvents(settings.trigger.events);
 
 	for (const [event, eventModels] of Object.entries(events)) {
-		strapi.eventHub.on(event, ({ model }) => {
-			if (eventModels.includes(model)) {
-				getPluginService(strapi, 'buildService').build({ settings, trigger: 'event' });
+		strapi.eventHub.on(event, (data) => {
+			if (eventModels.includes(data.model)) {
+				getPluginService(strapi, 'buildService').build({
+					settings,
+					trigger: { type: 'event', data: { type: event, ...data } },
+				});
 			}
 		});
 	}
