@@ -2,6 +2,10 @@
 
 A plugin for [Strapi](https://github.com/strapi/strapi) that provides the ability to trigger website builds manually, periodically or through model events.
 
+[![Downloads](https://img.shields.io/npm/dm/strapi-plugin-website-builder?style=for-the-badge)](https://img.shields.io/npm/dm/strapi-plugin-website-builder?style=for-the-badge)
+[![Install size](https://img.shields.io/npm/l/strapi-plugin-website-builder?style=for-the-badge)](https://img.shields.io/npm/l/strapi-plugin-website-builder?style=for-the-badge)
+[![Package version](https://img.shields.io/github/v/release/ComfortablyCoding/strapi-plugin-website-builder?style=for-the-badge)](https://img.shields.io/github/v/release/ComfortablyCoding/strapi-plugin-website-builder?style=for-the-badge)
+
 ## Requirements
 
 The installation requirements are the same as Strapi itself and can be found in the documentation on the [Quick Start](https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html) page in the Prerequisites info card.
@@ -34,6 +38,7 @@ The plugin has different structures depending on the type of trigger for the bui
 
 ```javascript
 module.exports = ({ env }) => ({
+  // ...
  'website-builder': {
     enabled: true,
     config: {
@@ -43,6 +48,7 @@ module.exports = ({ env }) => ({
       },
     }
   },
+  // ...
 });
 ```
 
@@ -50,6 +56,7 @@ module.exports = ({ env }) => ({
 
 ```javascript
 module.exports = ({ env }) => ({
+  // ...
  'website-builder': {
     enabled: true,
     config: {
@@ -60,6 +67,7 @@ module.exports = ({ env }) => ({
       },
     }
   },
+  // ...
 });
 ```
 
@@ -67,6 +75,7 @@ module.exports = ({ env }) => ({
 
 ```javascript
 module.exports = ({ env }) => ({
+  // ...
  'website-builder': {
     enabled: true,
     config: {
@@ -82,6 +91,7 @@ module.exports = ({ env }) => ({
       },
     }
   },
+  // ...
 });
 ```
 
@@ -108,4 +118,5 @@ To trigger a manual build select the `Website Builder` menu item in the sidebar 
 the `Trigger Build` button to start a build process.
 
 ## Bugs
+
 If any bugs are found please report them as a [Github Issue](https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues)
