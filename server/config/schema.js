@@ -20,6 +20,8 @@ const pluginConfigSchema = yup
 					.array()
 					.of(
 						yup.object().shape({
+							url: yup.string(),
+							params: yup.object(),
 							model: yup.string().required('A model name is required'),
 							types: yup
 								.array()

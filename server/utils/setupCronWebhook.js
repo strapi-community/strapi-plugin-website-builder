@@ -7,7 +7,7 @@ const { getPluginService } = require('./getPluginService');
 const setupCronWebhook = (strapi, settings) => {
 	strapi.cron.add({
 		[settings.trigger.cron]: ({ strapi }) => {
-			getPluginService(strapi, 'buildService').build({ settings, trigger: 'cron' });
+			getPluginService(strapi, 'buildService').build({ settings, trigger: { type: 'cron' } });
 		},
 	});
 };

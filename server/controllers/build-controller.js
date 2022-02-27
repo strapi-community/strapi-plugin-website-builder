@@ -13,7 +13,7 @@ module.exports = ({ strapi }) => ({
 
 			const buildStatus = await getPluginService(strapi, 'buildService').build({
 				settings,
-				trigger: 'manual',
+				trigger: { type: 'manual' },
 			});
 
 			ctx.send({ data: { status: buildStatus } });
