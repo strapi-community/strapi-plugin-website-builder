@@ -108,6 +108,8 @@ module.exports = ({ env }) => ({
 | trigger.type | The type of trigger. The current supported options are `manual`,`cron` and `event` | String | Yes |
 | trigger.cron | The cron expression to use for cron trigger. The supported expressions are the same as in the [strapi docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/cronjobs.html#cron-jobs) | String | Only if the type is cron |
 | trigger.events | The events to use for the event trigger. | Array | Only if the type is event |
+| trigger.events.url | The model specific url to hit on event trigger. | String | No |
+| trigger.events.params | The model specific params to add on event trigger. | Object | No |
 | trigger.events.model | The model to listen for events on. | String | Yes |
 | trigger.events.types | The model events to trigger on. The current supported events are `create`, `update` and `delete` | Array | Yes |
 
