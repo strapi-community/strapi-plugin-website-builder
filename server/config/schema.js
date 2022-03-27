@@ -21,7 +21,19 @@ const pluginConfigSchema = yup
 					.of(
 						yup.object().shape({
 							url: yup.string(),
-							params: yup.object(),
+							params: yup.mixed().test({
+								name: 'params',
+								exclusive: true,
+								message: '${path} must be an object or function',
+								test: async (value) => {
+									if (typeof value !== 'function') {
+										const isObject = await yup.object().isValid(value);
+										return isObject;
+									}
+
+									return true;
+								},
+							}),
 							model: yup.string().required('A model name is required'),
 							types: yup
 								.array()

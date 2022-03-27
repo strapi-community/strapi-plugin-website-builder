@@ -37,6 +37,7 @@ const setupEventWebhook = (strapi, settings) => {
 		strapi.eventHub.on(event, (data) => {
 			if (eventModels.includes(data.model)) {
 				getPluginService(strapi, 'buildService').build({
+					record: data.entry,
 					settings,
 					trigger: { type: 'event', data: { type: event, ...data } },
 				});
