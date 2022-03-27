@@ -37,7 +37,7 @@ const pluginConfigSchema = yup
 							model: yup.string().required('A model name is required'),
 							types: yup
 								.array()
-								.of(yup.string().oneOf(['create', 'update', 'delete']))
+								.of(yup.string().oneOf(['create', 'update', 'delete','publish','unpublish']))
 								.required('types is required'),
 						})
 					)
