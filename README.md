@@ -121,7 +121,7 @@ module.exports = ({ env }) => ({
 | trigger.events.url | The model specific url to hit on event trigger. | String | No |
 | trigger.events.params | The model specific params to add on event trigger. | Object `or` Function | No |
 | trigger.events.model | The model to listen for events on. | String | Yes |
-| trigger.events.types | The model events to trigger on. The current supported events are `create`, `update` and `delete` | Array | Yes |
+| trigger.events.types | The model events to trigger on. The current supported events are `create`, `update`, `delete`, `publish` and `unpublish`. Publish/Unpublish is only supported for non media models. | Array | Yes |
 
 ## Usage
 
