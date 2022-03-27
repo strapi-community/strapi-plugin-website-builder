@@ -4,6 +4,12 @@ const axios = require('axios').default;
 const { getPluginService } = require('../utils/getPluginService');
 
 module.exports = ({ strapi }) => ({
+	buildRequestConfigParams(params, record) {
+		if (typeof params !== 'function') {
+			return params;
+		}
+		return params(record);
+	},
 	/**
 	 * Builds the build request configuration
 	 *
@@ -13,7 +19,7 @@ module.exports = ({ strapi }) => ({
 	 *
 	 * @return {object} requestConfig The request configuration for the build request
 	 */
-	buildRequestConfig({ settings, trigger }) {
+	buildRequestConfig({ settings, trigger, record }) {
 		let requestConfig = { method: 'POST', data: {}, url: settings.url };
 		if (settings.headers) {
 			requestConfig.headers = settings.headers;
@@ -39,7 +45,7 @@ module.exports = ({ strapi }) => ({
 		}
 
 		if (eventSettings.params) {
-			requestConfig.params = eventSettings.params;
+			requestConfig.params = this.buildRequestConfigParams(eventSettings.params, record);
 		}
 
 		return requestConfig;
@@ -53,10 +59,10 @@ module.exports = ({ strapi }) => ({
 	 *
 	 * @return {Promise<object>} response The response data from the url
 	 */
-	async build({ settings, trigger }) {
+	async build({ record, settings, trigger }) {
 		let status = 500;
 		try {
-			let requestConfig = this.buildRequestConfig({ settings, trigger });
+			let requestConfig = this.buildRequestConfig({ settings, trigger, record });
 			const buildResponse = await axios(requestConfig);
 			status = buildResponse.status;
 		} catch (error) {
