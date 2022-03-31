@@ -1,11 +1,15 @@
 'use strict';
 
 const yup = require('yup');
+const { isURL } = require('../utils/isURL');
 
 const pluginConfigSchema = yup
 	.object()
 	.shape({
-		url: yup.string().url().required('url is required'),
+		url: yup
+			.string()
+			.test((value) => isURL(value))
+			.required('A valid url is required'),
 		headers: yup.object(),
 		body: yup.object(),
 		trigger: yup
@@ -37,7 +41,7 @@ const pluginConfigSchema = yup
 							model: yup.string().required('A model name is required'),
 							types: yup
 								.array()
-								.of(yup.string().oneOf(['create', 'update', 'delete','publish','unpublish']))
+								.of(yup.string().oneOf(['create', 'update', 'delete', 'publish', 'unpublish']))
 								.required('types is required'),
 						})
 					)
