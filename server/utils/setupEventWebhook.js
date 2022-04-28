@@ -35,7 +35,9 @@ const setupEventWebhook = (strapi, settings) => {
 
 	for (const [event, eventModels] of Object.entries(events)) {
 		strapi.eventHub.on(event, (data) => {
-			if (eventModels.includes(data.model)) {
+			// build on data.media (nothing to verify since it wouldn't get here without having the event setup on the event listener)
+			// otherwise, build on matching models
+			if (data.media || eventModels.includes(data.model)) {
 				getPluginService(strapi, 'buildService').build({
 					record: data.entry,
 					settings,
