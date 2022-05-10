@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"name": "strapi-plugin-website-builder",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"description": "A plugin for Strapi Headless CMS that provides the ability to trigger website builds manually, periodically or through model events.",
 	"scripts": {
 		"lint": "eslint . --fix",
