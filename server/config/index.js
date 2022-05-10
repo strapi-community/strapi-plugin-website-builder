@@ -3,5 +3,5 @@
 const { pluginConfigSchema } = require('./schema.js');
 
 module.exports = {
-	validator: (config) => pluginConfigSchema.validate(config),
+	validator: async (config) => await pluginConfigSchema.validate(config),
 };
