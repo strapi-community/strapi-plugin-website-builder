@@ -129,6 +129,7 @@ Once the plugin has been installed and configured, it will show in the sidebar a
 To trigger a manual build select the `Website Builder` menu item in the sidebar and click
 the `Trigger Build` button to start a build process.
 
+If the plugin does not show in the sidebar in the admin after the plugin is enabled then a clean rebuild of the admin is required. This can be done by deleting the generated .cache and build folders and then re-running the develop command.
 ## Bugs
 
 If any bugs are found please report them as a [Github Issue](https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues)
