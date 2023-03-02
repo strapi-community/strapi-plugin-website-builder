@@ -1,10 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useNotification } from '@strapi/helper-plugin';
-import { build, buildLogs } from '../api';
+import { build, buildLogs, vercel } from '../api';
 import { getTrad } from '../utils/getTrad';
 
 const { triggerBuild } = build;
 const { fetchBuildLogs, createBuildLog, deleteBuildLog } = buildLogs;
+const { checkStates } = vercel;
 
 const getQuerykey = ({ base }) => {
 	return [base];
@@ -92,7 +93,25 @@ const useReactQuery = () => {
 		}),
 	};
 
-	return { buildLogQueries, buildLogMutations, buildMutations };
+	const vercelCheckStates = {
+		create: useMutation(checkStates, {
+			onSuccess: () => {
+				const querykey = getQuerykey({
+					base: 'get-build-logs',
+				});
+				handleSuccess({
+					invalidate: querykey,
+					notification: {
+						type: 'success',
+						tradId: `vercel.notification.update.success`,
+					},
+				});
+			},
+			onError: (error) => handleError(error),
+		})
+	}
+
+	return { buildLogQueries, buildLogMutations, buildMutations, vercelCheckStates };
 };
 
 export { useReactQuery };

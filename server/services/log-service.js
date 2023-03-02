@@ -33,6 +33,15 @@ module.exports = ({ strapi }) => ({
 	},
 
 	/**
+	 * Update a build log
+	 *
+	 * @return {Promise<Object>} log
+	 */
+	update(id, log) {
+		return strapi.entityService.update(uid, id, { data: log });
+	},
+
+	/**
 	 * Deletes a build log
 	 *
 	 * @return {Promise<Object>} log

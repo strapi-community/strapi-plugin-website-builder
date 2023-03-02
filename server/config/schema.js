@@ -54,6 +54,13 @@ const pluginConfigSchema = yup
 					}),
 			})
 			.required('trigger is required'),
+			vercel: yup
+				.object()
+				.shape({
+					app: yup.string().required('A Vercel app name is required'),
+					teamId: yup.string().required('A Vercel Team-Id is required'),
+					accessToken: yup.string().required('A Vercel API Access-Token name is required'),
+				})
 	})
 	.required('A config is required');
 

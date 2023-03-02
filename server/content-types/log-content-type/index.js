@@ -29,5 +29,14 @@ module.exports = {
 			enum: ['manual', 'cron', 'event'],
 			default: 'manual',
 		},
+		vercelDeploymentUid: {
+			type: 'string',
+		},
+		vercelStatus: {
+			type: 'string',
+		},
+		vercelStatusUpdatedAt: {
+			type: 'string',
+		}
 	},
 };

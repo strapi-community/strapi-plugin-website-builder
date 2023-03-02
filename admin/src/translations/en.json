@@ -9,5 +9,6 @@
 	"home.content.subtitle": "The right way to build websites.",
 	"build.notification.trigger.success": "Build has been triggered successfully",
 	"build-logs.notification.delete.success": "Build log deleted successfully",
+	"vercel.notification.update.success": "Vercel states updates successfully",
 	"plugin.name": "Website Builder"
 }

@@ -4,7 +4,7 @@ import { Typography } from '@strapi/design-system/Typography';
 import { useIntl } from 'react-intl';
 import { getTrad } from '../../../utils/getTrad';
 
-const headers = ['ID', 'Status', 'Trigger', 'Timestamp', 'Actions'];
+const headers = ['ID', 'Status', 'Trigger', 'Timestamp', 'Vercel Deployment Uid', 'Vercel Status', 'Vercel Status Updated At', 'Actions'];
 
 export const LogTableHeaders = () => {
 	const { formatMessage } = useIntl();

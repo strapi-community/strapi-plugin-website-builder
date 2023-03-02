@@ -5,7 +5,7 @@ import { NoContent } from '@strapi/helper-plugin';
 const LogTableRowEmpty = () => {
 	return (
 		<Tr>
-			<Td colSpan={5}>
+			<Td colSpan={8}>
 				<NoContent
 					content={{
 						id: 'Settings.apiTokens.emptyStateLayout',
