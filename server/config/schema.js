@@ -38,6 +38,19 @@ const pluginConfigSchema = yup
 									return true;
 								},
 							}),
+							headers: yup.mixed().test({
+								name: 'headers',
+								exclusive: true,
+								message: '${path} must be an object or function',
+								test: async (value) => {
+									if (typeof value !== 'function') {
+										const isObject = await yup.object().isValid(value);
+										return isObject;
+									}
+
+									return true;
+								},
+							}),
 							model: yup.string().required('A model name is required'),
 							types: yup
 								.array()

@@ -1,6 +1,7 @@
 'use strict';
 
 const axios = require('axios').default;
+const { defu } = require('defu');
 const { getPluginService } = require('../utils/getPluginService');
 
 module.exports = ({ strapi }) => ({
@@ -9,6 +10,12 @@ module.exports = ({ strapi }) => ({
 			return params;
 		}
 		return params(record);
+	},
+	buildRequestHeaders(headers, record) {
+		if (typeof headers !== 'function') {
+			return headers;
+		}
+		return headers(record);
 	},
 	/**
 	 * Builds the build request configuration
@@ -46,6 +53,14 @@ module.exports = ({ strapi }) => ({
 
 		if (eventSettings.params) {
 			requestConfig.params = this.buildRequestConfigParams(eventSettings.params, record);
+		}
+
+		if (eventSettings.headers) {
+			let headers = this.buildRequestHeaders(eventSettings.headers, record);
+			if (requestConfig.headers) {
+				headers = defu(headers, requestConfig.headers);
+			}
+			requestConfig.headers = headers;
 		}
 
 		return requestConfig;
