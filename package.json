@@ -25,7 +25,9 @@
 	"bugs": {
 		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"defu": "^6.1.2"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.17.2",
 		"@babel/eslint-parser": "^7.17.0",
