@@ -8,17 +8,17 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { NotFound } from '@strapi/helper-plugin';
-import { pluginId } from '../../pluginId';
-import HomePage from '../HomePage';
+import { PLUGIN_ID } from '../../utils/constants';
+import Builds from '../Builds/ListView';
+import BuildLogs from '../Logs/ListView';
 
 const App = () => {
 	return (
-		<div>
-			<Switch>
-				<Route path={`/plugins/${pluginId}`} component={HomePage} exact />
-				<Route component={NotFound} />
-			</Switch>
-		</div>
+		<Switch>
+			<Route path={`/plugins/${PLUGIN_ID}`} component={Builds} exact />
+			<Route path={`/plugins/${PLUGIN_ID}/logs`} component={BuildLogs} exact />
+			<Route component={NotFound} />
+		</Switch>
 	);
 };
 
