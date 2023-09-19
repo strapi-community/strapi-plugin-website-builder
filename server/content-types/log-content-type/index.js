@@ -18,16 +18,22 @@ module.exports = {
 	},
 	options: {
 		draftAndPublish: false,
-		comment: '',
 	},
 	attributes: {
 		status: {
 			type: 'integer',
 		},
+		build: {
+			type: 'string',
+		},
 		trigger: {
-			type: 'enumeration',
-			enum: ['manual', 'cron', 'event'],
-			default: 'manual',
+			type: 'string',
+		},
+		method: {
+			type: 'string',
+		},
+		response: {
+			type: 'json',
 		},
 	},
 };

@@ -4,16 +4,11 @@ module.exports = [
 	{
 		method: 'GET',
 		path: '/logs',
-		handler: 'logController.find',
-	},
-	{
-		method: 'POST',
-		path: '/logs',
-		handler: 'logController.create',
+		handler: 'log.find',
 	},
 	{
 		method: 'DELETE',
 		path: '/logs/:id',
-		handler: 'logController.delete',
+		handler: 'log.delete',
 	},
 ];
