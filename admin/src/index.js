@@ -1,48 +1,51 @@
 import { prefixPluginTranslations } from '@strapi/helper-plugin';
-import { pluginId } from './pluginId';
-import { Initializer } from './components/Initializer';
-import { PluginIcon } from './components/PluginIcon';
-import pluginPkg from '../../package.json';
+import { PLUGIN_ID } from './utils/constants';
+import Initializer from './components/Initializer';
+import PluginIcon from './components/PluginIcon';
 
-const name = pluginPkg.strapi.displayName;
+const name = 'Website Builder';
 
 export default {
 	register(app) {
 		app.addMenuLink({
-			to: `/plugins/${pluginId}`,
+			to: `/plugins/${PLUGIN_ID}`,
 			icon: PluginIcon,
 			intlLabel: {
-				id: `${pluginId}.plugin.name`,
+				id: `${PLUGIN_ID}.plugin.name`,
 				defaultMessage: name,
 			},
 			Component: async () => {
-				const component = await import(/* webpackChunkName: "[request]" */ './pages/App');
+				const component = await import(/* webpackChunkName: "[website-builder-request]" */ './pages/App');
 
 				return component;
 			},
 		});
 		app.registerPlugin({
-			id: pluginId,
+			id: PLUGIN_ID,
 			initializer: Initializer,
 			isReady: false,
 			name,
 		});
 	},
 	async registerTrads({ locales }) {
-		const importedTrads = [];
+		const importedTrads = await Promise.all(
+			locales.map((locale) => {
+				return import(/* webpackChunkName: "translation-[website-builder-request]" */ `./translations/${locale}.json`)
+					.then(({ default: data }) => {
+						return {
+							data: prefixPluginTranslations(data, PLUGIN_ID),
+							locale,
+						};
+					})
+					.catch(() => {
+						return {
+							data: {},
+							locale,
+						};
+					});
+			})
+		);
 
-		for (const locale of locales) {
-			try {
-				const { default: data } = await import(`./translations/${locale}.json`);
-				importedTrads.push({
-					data: prefixPluginTranslations(data, pluginId),
-					locale,
-				});
-			} catch (error) {
-				importedTrads.push({ data: {}, locale });
-			}
-		}
-
-		return importedTrads;
+		return Promise.resolve(importedTrads);
 	},
 };
