@@ -26,34 +26,28 @@
 		"url": "https://github.com/ComfortablyCoding/strapi-plugin-website-builder/issues"
 	},
 	"dependencies": {
-		"defu": "^6.1.2"
+		"axios": "^1.5.0",
+		"defu": "^6.1.2",
+		"lodash": "^4.17.21",
+		"react-query": "^3.39.3",
+		"react-router-dom": "^5.3.4",
+		"yup": "^0.32.9"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.17.2",
-		"@babel/eslint-parser": "^7.17.0",
-		"@babel/preset-react": "^7.16.7",
 		"eslint": "^8.8.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-react": "^7.28.0",
-		"prettier": "^2.5.1"
+		"prettier": "^2.5.1",
 	},
 	"peerDependencies": {
-		"@strapi/strapi": "^4.0.7",
-		"axios": "^0.24.0",
-		"lodash": "^4.17.21",
-		"react-query": "^3.24.3",
-		"yup": "^0.32.9"
+		"@strapi/strapi": "^4.0.7"
 	},
 	"strapi": {
 		"displayName": "Website Builder",
 		"description": "A plugin for Strapi Headless CMS that provides the ability to trigger website builds manually, periodically or through model events.",
 		"name": "website-builder",
 		"kind": "plugin"
-	},
-	"engines": {
-		"node": ">=14.19.1 <=18.x.x",
-		"npm": ">=6.0.0"
 	},
 	"keywords": [
 		"strapi",
