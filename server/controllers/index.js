@@ -1,9 +1,9 @@
 'use strict';
 
-const logController = require('./log-controller');
-const buildController = require('./build-controller');
+const log = require('./log-controller');
+const build = require('./build-controller');
 
 module.exports = {
-	logController,
-	buildController,
+	log,
+	build,
 };
