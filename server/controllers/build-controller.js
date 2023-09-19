@@ -1,24 +1,32 @@
 'use strict';
 
-const { getPluginService } = require('../utils/getPluginService');
+const { getService } = require('../utils/common');
+
 module.exports = ({ strapi }) => ({
 	/**
-	 * Trigger a website rebuild
+	 * Trigger a website build
 	 *
 	 * @return {Object}
 	 */
-	async build(ctx) {
+	async trigger(ctx) {
 		try {
-			const settings = await getPluginService(strapi, 'settingsService').get();
-
-			const buildStatus = await getPluginService(strapi, 'buildService').build({
-				settings,
+			const { status } = await getService({ strapi, name: 'build' }).trigger({
+				name: ctx.request.body.data.name,
 				trigger: { type: 'manual' },
 			});
 
-			ctx.send({ data: { status: buildStatus } });
+			ctx.send({ data: { status } });
 		} catch (error) {
 			ctx.badRequest();
 		}
+	},
+
+	/**
+	 * Get all builds
+	 *
+	 * @return {Object}
+	 */
+	async find(ctx) {
+		ctx.send({ data: getService({ strapi, name: 'settings' }).get({ path: 'builds' }) });
 	},
 });

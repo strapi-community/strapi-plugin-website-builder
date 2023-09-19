@@ -3,7 +3,12 @@
 module.exports = [
 	{
 		method: 'POST',
-		path: '/build',
-		handler: 'buildController.build',
+		path: '/builds',
+		handler: 'build.trigger',
+	},
+	{
+		method: 'GET',
+		path: '/builds',
+		handler: 'build.find',
 	},
 ];
