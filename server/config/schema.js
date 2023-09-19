@@ -11,38 +11,41 @@ const pluginConfigSchema = yup
 			yup.object().shape({
 				enabled: yup.bool(),
 				name: yup.string().required('A build name must be provided'),
-				url: yup.string(),
-				trigger: yup.object().shape({
-					type: yup.string().oneOf(['manual', 'cron', 'event']),
-					expression: yup.string().when('type', {
-						is: 'cron',
-						then: yup.string().required('A cron expression must be entered'),
-					}),
-					events: yup.array().when('type', {
-						is: 'event',
-						then: yup
-							.array()
-							.of(
-								yup.object().shape({
-									uid: yup.string().required('A uid is required'),
-									actions: yup.mixed().test({
-										name: 'actions',
-										exclusive: true,
-										message: '${path} must be an string or valid actions',
-										test: (value) =>
-											typeof value === 'string' ||
-											yup
-												.array()
-												.of(yup.string().oneOf(['create', 'update', 'delete', 'publish', 'unpublish']))
-												.required('uid actions are required')
-												.isValid(value),
-									}),
-								})
-							)
-							.min(1, 'At least one event must be provided')
-							.required('events is required'),
-					}),
-				}),
+				url: yup.string().required('A URL is required'),
+				trigger: yup
+					.object()
+					.shape({
+						type: yup.string().oneOf(['manual', 'cron', 'event']).required('A trigger type is required'),
+						expression: yup.string().when('type', {
+							is: 'cron',
+							then: yup.string().required('A cron expression must be entered'),
+						}),
+						events: yup.array().when('type', {
+							is: 'event',
+							then: yup
+								.array()
+								.of(
+									yup.object().shape({
+										uid: yup.string().required('A uid is required'),
+										actions: yup.mixed().test({
+											name: 'actions',
+											exclusive: true,
+											message: '${path} must be an string or valid actions',
+											test: (value) =>
+												typeof value === 'string' ||
+												yup
+													.array()
+													.of(yup.string().oneOf(['create', 'update', 'delete', 'publish', 'unpublish']))
+													.required('uid actions are required')
+													.isValid(value),
+										}),
+									})
+								)
+								.min(1, 'At least one event must be provided')
+								.required('events is required'),
+						}),
+					})
+					.required('A trigger is required'),
 				params: yup.mixed().test({
 					name: 'params',
 					exclusive: true,
