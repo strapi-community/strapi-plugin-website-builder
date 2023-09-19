@@ -4,8 +4,8 @@
 	"version": "2.2.3",
 	"description": "A plugin for Strapi Headless CMS that provides the ability to trigger website builds manually, periodically or through model events.",
 	"scripts": {
-		"lint": "eslint . --fix",
-		"format": "prettier --write **/*.{ts,js,json,yml}"
+		"lint:fix": "eslint --fix \"./**/*.{js,yml}\"",
+		"format:fix": "prettier --write \"./**/*.{js,json,yml,md}\"",
 	},
 	"author": {
 		"name": "@ComfortablyCoding",
