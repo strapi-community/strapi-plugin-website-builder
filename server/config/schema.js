@@ -25,10 +25,18 @@ const pluginConfigSchema = yup
 							.of(
 								yup.object().shape({
 									uid: yup.string().required('A uid is required'),
-									actions: yup
-										.array()
-										.of(yup.string().oneOf(['create', 'update', 'delete', 'publish', 'unpublish']))
-										.required('uid actions are required'),
+									actions: yup.mixed().test({
+										name: 'actions',
+										exclusive: true,
+										message: '${path} must be an string or valid actions',
+										test: (value) =>
+											typeof value === 'string' ||
+											yup
+												.array()
+												.of(yup.string().oneOf(['create', 'update', 'delete', 'publish', 'unpublish']))
+												.required('uid actions are required')
+												.isValid(value),
+									}),
 								})
 							)
 							.min(1, 'At least one event must be provided')
