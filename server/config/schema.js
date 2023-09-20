@@ -46,6 +46,7 @@ const pluginConfigSchema = yup
 						}),
 					})
 					.required('A trigger is required'),
+				method: yup.string().oneOf('GET', 'POST').optional(),
 				params: yup.mixed().test({
 					name: 'params',
 					exclusive: true,
