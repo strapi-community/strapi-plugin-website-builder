@@ -7,3 +7,7 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
+
+# docs
+docs/.vitepress/cache
+docs/.vitepress/dist
