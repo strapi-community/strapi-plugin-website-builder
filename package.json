@@ -6,6 +6,9 @@
 	"scripts": {
 		"lint:fix": "eslint --fix \"./**/*.{js,yml}\"",
 		"format:fix": "prettier --write \"./**/*.{js,json,yml,md}\"",
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
 	},
 	"author": {
 		"name": "@ComfortablyCoding",
@@ -39,6 +42,7 @@
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-react": "^7.28.0",
 		"prettier": "^2.5.1",
+		"vitepress": "^1.0.0-rc.14"
 	},
 	"peerDependencies": {
 		"@strapi/strapi": "^4.0.7"
