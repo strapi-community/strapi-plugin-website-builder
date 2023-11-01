@@ -24,21 +24,22 @@ yarn add strapi-plugin-website-builder
 
 ```js
 module.exports = ({ env }) => ({
-  // ...
-  'website-builder': {
-    enabled: true,
-    config: {
-      builds: [
-        {
-          url: 'https://link-to-hit-on-trigger.com'
-          trigger: {
-            type: 'manual'
-          },
-        },
-      ],
-    },
-  },
-  // ...
+	// ...
+	'website-builder': {
+		enabled: true,
+		config: {
+			builds: [
+				{
+					name: 'manual-build',
+					url: 'https://link-to-hit-on-trigger.com',
+					trigger: {
+						type: 'manual',
+					},
+				},
+			],
+		},
+	},
+	// ...
 });
 ```
 
