@@ -13,7 +13,7 @@ export const useLogs = () => {
 		return useQuery({
 			queryKey: [PLUGIN_ID, 'logs'],
 			queryFn: function () {
-				return get(`/${PLUGIN_ID}/logs`, { params: { pagination: { page } } });
+				return get(`/${PLUGIN_ID}/logs`, { params: { sort: ['id:desc'], pagination: { page } } });
 			},
 			select: function ({ data }) {
 				return { ...data } || false;
